@@ -14,7 +14,10 @@ export const HomePage = () => {
       <ul>
         {wheels.map(wheel => (
           <li key={wheel._id}>
-            <Link href={`/wheels/${wheel._id}`}>{wheel.label}</Link>
+            <Link
+              href={`/wheels/${wheel._id}`}
+              style={{padding: '0.5em', display: 'inline-block'}}
+            >{wheel.label}</Link>
           </li>
         ))}
         <li>

@@ -41,6 +41,7 @@ h1 a:not(:hover):not(:active):not(:focus) {
       "spinner drawings wedges"
       "spinner create   wedges";
     grid-template-columns: 445px 1fr 1fr;
+    grid-template-rows: min-content min-content 1fr;
   }
 }
 .WedgeRow button {

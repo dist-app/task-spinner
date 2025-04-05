@@ -35,7 +35,7 @@ export function DrawingsList(props: {
 
   return (
     <div id="DrawingsList">
-      <h2>Active Tasks</h2>
+      <h3>Active Tasks</h3>
       {drawings.map(drawing => (
         <div>
           <div className="WedgeRow" style={{
@@ -47,7 +47,7 @@ export function DrawingsList(props: {
               <div style={{fontWeight: 'bold', fontSize: '1.2em'}}>{drawing.label}</div>
               <div>Drawn {drawing.drawnAt?.toLocaleDateString()}</div>
             </div>
-            <button type="button" onClick={() => kickbackWedge(drawing._id)}>💤</button>
+            <button type="button" onClick={() => kickbackWedge(drawing._id)}>👎</button>
             <button type="button" onClick={() => completeWedge(drawing._id)}>✔</button>
           </div>
         </div>

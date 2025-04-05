@@ -41,21 +41,33 @@ export const CreateWedgeForm = (props: {
 
       <h4>Add wedge</h4>
 
-      <input
-        {...register('label', { required: true })}
-        placeholder="Wedge label"
-      />
+      <div style={{display: 'flex'}} className="input-row">
+        <input
+          {...register('label', { required: true })}
+          style={{flex: 1}}
+          placeholder="Wedge label"
+        />
 
-      <input
-        {...register('weight', { required: true, min: 1 })}
-        type='number'
-        style={{ width: '3em' }}
-      />
+        <input
+          {...register('weight', { required: true, min: 1 })}
+          type='number'
+          style={{ width: '3em' }}
+        />
 
-      <div style={{display: 'flex', width: '20em', flexWrap: 'wrap'}}>
+        <button
+          type="submit"
+          disabled={formState.isSubmitting}
+        >
+          Save
+        </button>
+      </div>
+
+      <div style={{display: 'flex', flexWrap: 'wrap'}}>
         {Object.entries(Colors).map(pair => (
           <label key={pair[0]} title={pair[0]} style={{
-            width: '2.5em', height: '2.5em',
+            // width: '3em', height: '3em',
+            flex: '11%',
+            aspectRatio: '1/1',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -68,13 +80,6 @@ export const CreateWedgeForm = (props: {
           </label>
         ))}
       </div>
-
-      <button
-        type="submit"
-        disabled={formState.isSubmitting}
-      >
-        Add wedge
-      </button>
 
     </form>
   );

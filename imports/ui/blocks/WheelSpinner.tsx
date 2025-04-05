@@ -12,6 +12,10 @@ export function WheelSpinner(props: {
   const wedges = useFind(() => WedgesCollection.find({
     wheelId: props.wheelId,
     lifecycle: 'live',
+  }, {
+    sort: {
+      label: 1,
+    },
   }), [props.wheelId]);
 
   const [activeSpin, setActiveSpin] = useState<{

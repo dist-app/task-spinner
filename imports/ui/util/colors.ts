@@ -14,9 +14,12 @@ export const Colors = {
   teal: "rgb(0, 150, 136)",
   green: "rgb(76, 175, 80)",
   lightGreen: "rgb(139, 195, 74)",
-  lime: "rgb(205, 220, 57)",
-  yellow: "rgb(255, 235, 59)",
-  amber: "rgb(255, 193, 7)",
-  orange: "rgb(255, 152, 0)",
+  lime: "#c0ca33", // 600
+  yellow: "#fbc02d", // 700
+  amber: "#ffa000", // 700
+  orange: "#fb8c00", // 600
   deepOrange: "rgb(255, 87, 34)",
+
+  darkGray: "#666",
+  lightGray: "#999",
 }

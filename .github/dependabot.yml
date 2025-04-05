@@ -1,0 +1,25 @@
+version: 2
+updates:
+
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+        interval: monthly
+
+    groups:
+      opentelemetry:
+        patterns:
+        - '@opentelemetry/*'
+      dev-deps:
+        dependency-type: development
+
+    ignore:
+    - dependency-name: react-router-dom
+      # https://github.com/remix-run/react-router/issues/12381
+      versions:
+      - '>= 7'
+
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: monthly

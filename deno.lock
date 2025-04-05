@@ -1,0 +1,50 @@
+{
+  "version": "4",
+  "redirects": {
+    "https://esm.sh/@types/shimmer@~1.2.0/index.d.ts": "https://esm.sh/@types/shimmer@1.2.0/index.d.ts"
+  },
+  "remote": {
+    "https://deno.land/x/observability@v0.7.0/instrumentation/auto.ts": "7dfce3e6d1defddc860daa0a9af00da1a6bd1de9c922f8c91a5f9d6a54654cbf",
+    "https://deno.land/x/observability@v0.7.0/instrumentation/deno-command.ts": "51f349ed5842e1c0d7a6af5f003e2690100b898f05e18f0ddb0551ffcbce5e58",
+    "https://deno.land/x/observability@v0.7.0/instrumentation/deno-kv.ts": "a24940c0560c32f904fb38ab9096ea7b456084245fcdba4b10f6c8e77f0d0498",
+    "https://deno.land/x/observability@v0.7.0/instrumentation/deno-runtime.ts": "da307797de18d2625198b47917b31d9c0aa07d547d7b5840f4fd125a29dc5939",
+    "https://deno.land/x/observability@v0.7.0/instrumentation/fetch.ts": "1654d1529f64a7f6ef69a50798cfb59f17e466ad47404ea26c02b4dfabcd988f",
+    "https://deno.land/x/observability@v0.7.0/opentelemetry/api-logs.js": "353ebfe8415cd4c26c786415a71b8893b60e47ab8a916c0fdfe92e8a27c4eb9d",
+    "https://deno.land/x/observability@v0.7.0/opentelemetry/api.js": "71e2efe3dc24720583802670060433a79ddc7b54597c7956bbe6429fbffcfcda",
+    "https://deno.land/x/observability@v0.7.0/opentelemetry/core.js": "eac1b204f14f2bb8f16a797c7ffb34622b43f8faa75f73e305acd9065bd6eb72",
+    "https://deno.land/x/observability@v0.7.0/opentelemetry/exporter-metrics-otlp-http.js": "76ed78ce3e42d80a296775704394995a581a56ac879ac47d235e0a047de53e14",
+    "https://deno.land/x/observability@v0.7.0/opentelemetry/instrumentation.js": "de0c38e9e4d7651d3ac61a486a0a85ac1a3aba27ce554ed52339522add614760",
+    "https://deno.land/x/observability@v0.7.0/opentelemetry/otlp-exporter-base.js": "63d4cd7b28e62bf4738235c5fa8b9297660a1ee7e1532049fec08f3d2038e29a",
+    "https://deno.land/x/observability@v0.7.0/opentelemetry/otlp-transformer.js": "189099e04ad18cdd403cb9dc8aef01490c7a9d2843cd8be3d6e5cb5162735f55",
+    "https://deno.land/x/observability@v0.7.0/opentelemetry/resources.js": "4bd9b1b5d11fecf55f0eef15929f7170c9acb81e41d69c99bcd32d54dcb385e5",
+    "https://deno.land/x/observability@v0.7.0/opentelemetry/sdk-logs.js": "f2f8d7b93be4a472aa0638d3a4722d6f5e3813c0a82e7c8095f44463d9a79d12",
+    "https://deno.land/x/observability@v0.7.0/opentelemetry/sdk-metrics.js": "07f145e85045b2a708df543debf1d1f65819bdf6e8c1dfe5f026f63e9c70a48a",
+    "https://deno.land/x/observability@v0.7.0/opentelemetry/sdk-trace-base.js": "a29671f6858666af17967131308d0236f6176e7519e61d5801c36745ad6aa0f3",
+    "https://deno.land/x/observability@v0.7.0/opentelemetry/semantic-conventions.js": "325894e08f50969cd7124ef170a2f01af515f69bf60c6291d06367c54d831943",
+    "https://deno.land/x/observability@v0.7.0/otel-platform/context-manager.ts": "8ec46d784c3058cc5309de74b32cdad131f5bd68ee34f3b914e2dd0fe5bba514",
+    "https://deno.land/x/observability@v0.7.0/otel-platform/detectors.ts": "19adb88485b0ceca639bf16121022eb353eb8a5897ced6544b17eeefe27a5d6a",
+    "https://deno.land/x/observability@v0.7.0/otel-platform/otlp-json-exporters.ts": "8bc30b8f888554c8b477e54667ec254cfa138bb9ba771f78eb5f1e649f6f2919",
+    "https://deno.land/x/observability@v0.7.0/preconfigured/from-environment.ts": "88fdd9479c124b7f4ea0a2e55342b13fb8640cd861567afd939975ac849c345b",
+    "https://deno.land/x/observability@v0.7.0/sdk.ts": "bf10eabf3b409241607bd6cb406a88bd49076fd149d0354507a051a4f0a910e3",
+    "https://esm.sh/shimmer@1.2.1": "81f32087a6dbcf26b1953fe14629caf1b1fe92d1aac3370acb4d33a233680987",
+    "https://esm.sh/shimmer@1.2.1/denonext/shimmer.mjs": "6b2cc25472ebc0a0627a087fa0ae919121903f9494da796e8ed59c4067651f56"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@babel/runtime@^7.20.7",
+        "npm:@types/mocha@^8.2.3",
+        "npm:@types/node@^18.13.0",
+        "npm:@types/react-dom@^18.0.10",
+        "npm:@types/react@^18.0.26",
+        "npm:meteor-node-stubs@^1.2.5",
+        "npm:raviger@^4.2.0",
+        "npm:react-custom-roulette@^1.4.1",
+        "npm:react-dom@^18.2.0",
+        "npm:react-hook-form@^7.55.0",
+        "npm:react@^18.2.0",
+        "npm:typescript@^4.9.4"
+      ]
+    }
+  }
+}

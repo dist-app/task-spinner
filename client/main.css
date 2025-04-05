@@ -1,0 +1,49 @@
+body {
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+#WheelPage {
+  display: grid;
+  grid-template-areas: "header" "spinner" "sidebar";
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+@media (min-width: 800px) {
+  #WheelPage {
+    margin: 0 auto;
+    max-width: 60em;
+    grid-template-areas: "header header" "spinner sidebar";
+    grid-template-columns: 3fr 2fr;
+  }
+}
+.WedgeRow button {
+  width: 3em;
+}
+#WheelHeader {
+  grid-area: header;
+  text-align: center;
+}
+#WheelSpinner {
+  grid-area: spinner;
+  justify-self: center;
+}
+#WheelSpinner button {
+  font-size: 1.5em;
+  padding: 0.5em 1em;
+  margin: 0.25em;
+}
+#WheelSidebar {
+  grid-area: sidebar;
+}
+
+.WedgeRow {
+  /* max-width: 20em; */
+  display: flex;
+  box-sizing: border-box;
+  color: #fff;
+}

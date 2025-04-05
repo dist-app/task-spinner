@@ -1,0 +1,43 @@
+{
+  "denoDeploy": {
+    "databases": {"default": ""},
+    "requestTimeout": 5000
+  },
+
+  "meteorApp": {
+    "collections": {
+      "Wheels": {
+        "apiVersion": "task-spinner.dist.app/v1alpha1",
+        "kind": "Wheel"
+      },
+      "Wedges": {
+        "apiVersion": "task-spinner.dist.app/v1alpha1",
+        "kind": "Wedge"
+      },
+      "Drawings": {
+        "apiVersion": "task-spinner.dist.app/v1alpha1",
+        "kind": "Drawing"
+      }
+    },
+    "spaPathPatterns": [
+      "/",
+      "/wheels/*"
+    ]
+  },
+
+  "appName": "Task Wheel",
+  "appDesc": "Spinner for the todos that you aren't excited about",
+  "appIcon": {
+    "type": "glyph",
+    "glyph": {
+      "text": "🤸🏻",
+      "backgroundColor": "#d9941e"
+    }
+  },
+
+  "authnMethods": {
+    "cookie": {
+      "sessionLengthDays": 14
+    }
+  }
+}

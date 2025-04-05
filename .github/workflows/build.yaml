@@ -1,0 +1,106 @@
+name: Build
+on:
+  push: {}
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    steps:
+
+    - uses: actions/checkout@v4
+
+    # some prior work on caching:
+    # https://github.com/meteor-actions/cache-build/blob/main/action.yml
+
+    - name: Read Meteor release
+      id: find-meteor
+      run: echo "release=$(cut -d@ -f2 < .meteor/release)" | tee -a "$GITHUB_OUTPUT"
+    - name: Cache Meteor ${{ steps.find-meteor.outputs.release }}
+      id: cache-meteor
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.meteor
+          /usr/local/bin/meteor
+        key: meteor/${{ steps.find-meteor.outputs.release }}-installation
+    - name: Setup Meteor ${{ steps.find-meteor.outputs.release }}
+      if: ${{ steps.cache-meteor.outputs.cache-hit != 'true' }}
+      uses: meteorengineer/setup-meteor@v2
+      with:
+        meteor-release: ${{ steps.find-meteor.outputs.release }}
+
+    - name: Cache NPM
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: npm-${{ github.ref }}-${{ hashFiles('package-lock.json') }}
+        restore-keys: |
+          npm-${{ github.ref }}-
+          npm-
+
+    - name: Install NPM dependencies
+      run: meteor npm install
+
+    - name: Cache Meteor Local
+      uses: actions/cache@v4
+      with:
+        path: |
+          .meteor/local/resolver-result-cache.json
+          .meteor/local/plugin-cache
+          .meteor/local/isopacks
+          .meteor/local/bundler-cache/scanner
+        key: meteor/${{ steps.find-meteor.outputs.release }}-local-${{ github.ref }}-${{ github.sha }}
+        restore-keys: |
+          meteor/${{ steps.find-meteor.outputs.release }}-local-${{ github.ref }}-
+          meteor/${{ steps.find-meteor.outputs.release }}-local-
+
+    - name: Use Deno stable
+      uses: denoland/setup-deno@v2
+      with:
+        deno-version: v2.1
+    - name: Cache https://
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cache/deno/remote/https
+          ~/.cache/deno/gen/https
+        key: deno-https/v2-${{ github.sha }}
+        restore-keys: deno-https/v2-
+    - name: Install dist-bundle utility
+      run: deno install --global --allow-all --no-config https://uber.danopia.net/dist-app-deno/643b6476f41d4a62d2a6fca3df09f4167001a387/cli/dist-bundle/main.ts
+
+    - name: Log into GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: x-access-token
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804
+      with:
+        images: ghcr.io/dist-app/task-spinner
+        tags: |
+          type=sha,suffix=-h${{github.run_number}}
+          type=ref,event=pr
+          type=ref,event=tag
+          type=edge,branch=main
+
+    - name: Build artifact
+      id: build
+      run: dist-bundle build
+      env:
+        artifact-labels: ${{ steps.meta.outputs.labels }}
+        METEOR_DISABLE_OPTIMISTIC_CACHING: 1
+
+    - name: Push artifact
+      run: dist-bundle push
+      env:
+        digest: ${{ steps.build.outputs.digest }}
+        destinations: ${{ steps.meta.outputs.tags }}

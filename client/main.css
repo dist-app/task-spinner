@@ -13,16 +13,34 @@ h1 a:not(:hover):not(:active):not(:focus) {
 
 #WheelPage {
   display: grid;
-  grid-template-areas: "header" "spinner" "sidebar";
+  grid-template-areas:
+    "header"
+    "spinner"
+    "drawings"
+    "create"
+    "wedges";
   grid-template-columns: 1fr;
   gap: 1em;
 }
 @media (min-width: 800px) {
   #WheelPage {
-    margin: 0 auto;
-    max-width: 60em;
-    grid-template-areas: "header header" "spinner sidebar";
-    grid-template-columns: 3fr 2fr;
+    /* margin: 0 auto;
+    max-width: 60em; */
+    grid-template-areas:
+      "header  header"
+      "spinner drawings"
+      "spinner create"
+      "spinner wedges";
+    grid-template-columns: 445px 1fr;
+  }
+}
+@media (min-width: 1200px) {
+  #WheelPage {
+    grid-template-areas:
+      "header  header   header"
+      "spinner drawings wedges"
+      "spinner create   wedges";
+    grid-template-columns: 445px 1fr 1fr;
   }
 }
 .WedgeRow button {
@@ -43,6 +61,15 @@ h1 a:not(:hover):not(:active):not(:focus) {
 }
 #WheelSidebar {
   grid-area: sidebar;
+}
+#DrawingsList {
+  grid-area: drawings;
+}
+#CreateWedgeForm {
+  grid-area: create;
+}
+#WedgesList {
+  grid-area: wedges;
 }
 
 .WedgeRow {

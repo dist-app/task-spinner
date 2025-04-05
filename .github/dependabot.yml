@@ -14,10 +14,19 @@ updates:
         dependency-type: development
 
     ignore:
-    - dependency-name: react-router-dom
-      # https://github.com/remix-run/react-router/issues/12381
+    # Stay on React 18 until
+    - dependency-name: 'react'
       versions:
-      - '>= 7'
+      - '>= 19'
+    - dependency-name: '@types/react'
+      versions:
+      - '>= 19'
+    - dependency-name: 'react-dom'
+      versions:
+      - '>= 19'
+    - dependency-name: '@types/react-dom'
+      versions:
+      - '>= 19'
 
   - package-ecosystem: github-actions
     directory: '/'

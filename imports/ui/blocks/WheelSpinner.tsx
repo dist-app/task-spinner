@@ -36,9 +36,13 @@ export function WheelSpinner(props: {
     });
   }, [activeSpin, setActiveSpin]);
 
-  // if (wedges.length < 1) {
-  //   return (<div>Loading wheel...</div>);
-  // }
+  if (wedges.length < 2) {
+    return (
+      <div id="WheelSpinner">
+        Add more tasks to start spinning!
+      </div>
+    );
+  }
 
   return (
     <div id="WheelSpinner">

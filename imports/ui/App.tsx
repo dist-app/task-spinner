@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRoutes } from 'raviger'
+import { Link, useRoutes } from 'raviger'
 
 import { HomePage } from './HomePage';
 import { WheelPage } from './WheelPage';
@@ -12,7 +12,7 @@ const routes = {
 
 export function App() {
   const isLoading = useSubscribe("wheel-list");
-  
+
   const route = useRoutes(routes);
 
   if (isLoading()) {
@@ -21,7 +21,7 @@ export function App() {
 
   return (
     <div>
-      <h1>spinny wheel of doing things THEN checking them off ✅🤸🎡🍂</h1>
+      <h1><Link href="/">spinny wheel of doing things THEN checking them off ✅🤸🎡🍂</Link></h1>
       {route}
     </div>
   );

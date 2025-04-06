@@ -5,16 +5,6 @@
   },
 
   "meteorApp": {
-    "collections": {
-      "Wheels": {
-        "apiVersion": "task-spinner.dist.app/v1alpha1",
-        "kind": "Wheel"
-      },
-      "Wedges": {
-        "apiVersion": "task-spinner.dist.app/v1alpha1",
-        "kind": "Wedge"
-      }
-    },
     "spaPathPatterns": [
       "/",
       "/wheels/*"

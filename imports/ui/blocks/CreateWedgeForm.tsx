@@ -39,7 +39,7 @@ export const CreateWedgeForm = (props: {
   return (
     <form id="CreateWedgeForm" onSubmit={handleSubmit(d => onSubmit(d))}>
 
-      <h4>Add wedge</h4>
+      <h3>Add Task</h3>
 
       <div style={{display: 'flex'}} className="input-row">
         <input

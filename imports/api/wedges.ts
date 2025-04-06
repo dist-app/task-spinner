@@ -57,7 +57,7 @@ Meteor.methods({
       lifecycle: 'drawn',
     }, {
       $set: {
-        lifecycle: 'drawn',
+        lifecycle: 'done',
         drawnAt: new Date,
       },
     });

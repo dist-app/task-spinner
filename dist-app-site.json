@@ -13,10 +13,6 @@
       "Wedges": {
         "apiVersion": "task-spinner.dist.app/v1alpha1",
         "kind": "Wedge"
-      },
-      "Drawings": {
-        "apiVersion": "task-spinner.dist.app/v1alpha1",
-        "kind": "Drawing"
       }
     },
     "spaPathPatterns": [

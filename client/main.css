@@ -5,10 +5,17 @@ body {
 
 h1 {
   text-align: center;
+  margin: 0;
 }
 h1 a:not(:hover):not(:active):not(:focus) {
   color: inherit;
   text-decoration: none;
+}
+h2 {
+  margin: 1em 0 0;
+}
+h3 {
+  margin: 0 0 0.3em;
 }
 
 #WheelPage {
@@ -21,6 +28,8 @@ h1 a:not(:hover):not(:active):not(:focus) {
     "wedges";
   grid-template-columns: 1fr;
   gap: 1em;
+  max-width: 30em;
+  margin: 0 auto;
 }
 @media (min-width: 800px) {
   #WheelPage {
@@ -29,18 +38,21 @@ h1 a:not(:hover):not(:active):not(:focus) {
     grid-template-areas:
       "header  header"
       "spinner drawings"
-      "spinner create"
-      "spinner wedges";
-    grid-template-columns: 50% 1fr;
+      "spinner wedges"
+      "create wedges";
+    grid-template-columns: 1fr 1fr;
+    max-width: initial;
+    column-gap: 5vw;
+    margin: 0 10vw;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   #WheelPage {
     grid-template-areas:
       "header  header   header"
       "spinner drawings wedges"
       "spinner create   wedges";
-    grid-template-columns: 40% 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: min-content min-content 1fr;
   }
 }
@@ -58,7 +70,11 @@ h1 a:not(:hover):not(:active):not(:focus) {
   box-sizing: border-box;
   justify-self: auto;
   align-self: flex-start;
-  margin: 0 10%;
+}
+@media (max-width: 799px) {
+  #WheelSpinner {
+    margin: 0 10%;
+  }
 }
 #WheelSpinner > div {
   flex: 1;
@@ -115,8 +131,8 @@ h1 a:not(:hover):not(:active):not(:focus) {
   box-sizing: border-box;
   /* border: 4px solid #fff; */
 }
-.ColorSwatches input {
-  visibility: hidden;
+.ColorSwatches input:not(:focus) {
+  z-index: -10;
 }
 
 .ColorSwatches label:has(> input:checked) {

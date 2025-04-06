@@ -31,7 +31,7 @@ h1 a:not(:hover):not(:active):not(:focus) {
       "spinner drawings"
       "spinner create"
       "spinner wedges";
-    grid-template-columns: 445px 1fr;
+    grid-template-columns: 50% 1fr;
   }
 }
 @media (min-width: 1200px) {
@@ -40,7 +40,7 @@ h1 a:not(:hover):not(:active):not(:focus) {
       "header  header   header"
       "spinner drawings wedges"
       "spinner create   wedges";
-    grid-template-columns: 445px 1fr 1fr;
+    grid-template-columns: 40% 1fr 1fr;
     grid-template-rows: min-content min-content 1fr;
   }
 }
@@ -54,11 +54,19 @@ h1 a:not(:hover):not(:active):not(:focus) {
 #WheelSpinner {
   grid-area: spinner;
   justify-self: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-self: auto;
+  align-self: flex-start;
+  margin: 0 10%;
 }
-#WheelSpinner button {
-  font-size: 1.5em;
-  padding: 0.5em 1em;
-  margin: 0.25em;
+#WheelSpinner > div {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  width: auto;
+  height: auto;
+  max-width: initial;
+  max-height: initial;
 }
 #WheelSidebar {
   grid-area: sidebar;
@@ -84,7 +92,11 @@ h1 a:not(:hover):not(:active):not(:focus) {
   font-size: 1.2em;
 }
 
+.input-row input {
+  width: 0;
+}
 .input-row input, .input-row button {
   padding: 0.25em 0.5em;
   font-size: 1.2em;
+  flex-shrink: 1;
 }

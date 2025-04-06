@@ -49,7 +49,7 @@ export function WheelSpinner(props: {
   }
 
   return (
-    <div id="WheelSpinner">
+    <button id="WheelSpinner" onClick={startSpin} type="button" disabled={!!activeSpin}>
       <Wheel
         mustStartSpinning={!!activeSpin}
         prizeNumber={activeSpin?.winnerIdx ?? 0}
@@ -66,9 +66,6 @@ export function WheelSpinner(props: {
         backgroundColors={['#3e3e3e', '#df3428']}
         textColors={['#ffffff']}
       />
-      <div style={{textAlign: 'center'}}>
-        <button onClick={startSpin} type="button" disabled={!!activeSpin}>Spin</button>
-      </div>
-    </div>
+    </button>
   );
 }

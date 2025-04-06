@@ -1,0 +1,44 @@
+---
+apiVersion: bundle.dist.app/v1alpha1
+kind: AppManifest
+metadata:
+  name: task-wheel
+spec:
+  title: Task Wheel
+  description: Spinner for the todos that you aren't excited about
+  primaryIcon:
+    apiVersion: TODO.dist.app/v1alpha1
+    kind: Glyph
+    spec:
+      text: 🤸🏻
+      backgroundColor: '#d9941e'
+
+---
+apiVersion: bundle.dist.app/v1alpha1
+kind: DenoDeploy
+metadata:
+  name: main
+spec:
+  attachDatabase: true
+  requestTimeout: 5000
+
+---
+apiVersion: bundle.dist.app/v1alpha1
+kind: MeteorServerless
+metadata:
+  name: main
+spec:
+  spaPathPatterns:
+  - /
+  - /wheels/*
+  authnMethods:
+    cookie:
+      sessionLengthDays: 14
+
+# ---
+# apiVersion: bundle.dist.app/v1alpha1
+# kind: CookieAuthn
+# metadata:
+#   name: main
+# spec:
+#   sessionLengthDays: 14

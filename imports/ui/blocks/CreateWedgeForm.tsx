@@ -62,15 +62,9 @@ export const CreateWedgeForm = (props: {
         </button>
       </div>
 
-      <div style={{display: 'flex', flexWrap: 'wrap'}}>
+      <div className="ColorSwatches">
         {Object.entries(Colors).map(pair => (
           <label key={pair[0]} title={pair[0]} style={{
-            // width: '3em', height: '3em',
-            flex: '11%',
-            aspectRatio: '1/1',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
             backgroundColor: pair[1]}}>
             <input
               {...register('color', { required: true })}

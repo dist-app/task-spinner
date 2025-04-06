@@ -100,3 +100,27 @@ h1 a:not(:hover):not(:active):not(:focus) {
   font-size: 1.2em;
   flex-shrink: 1;
 }
+
+.ColorSwatches {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ColorSwatches label {
+  /* // width: 3em; height: 3em; */
+  flex: 11%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* border: 4px solid #fff; */
+}
+.ColorSwatches input {
+  visibility: hidden;
+}
+
+.ColorSwatches label:has(> input:checked) {
+  /* border: 4px inset #fff; */
+  border: 5px solid black;
+  border-color: #333 #ccc #ccc #333;
+}

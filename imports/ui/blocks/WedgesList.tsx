@@ -45,7 +45,7 @@ export function WedgesList(props: {
   return (
     <div id="WedgesList">
       <h3>Tasks in play</h3>
-      {wedges.map(drawing => (
+      {wedges.filter(x => x.lifecycle == 'live').map(drawing => (
         <div>
           <div className="WedgeRow" style={{
             backgroundColor: Colors[drawing.color as 'red'],
@@ -56,15 +56,28 @@ export function WedgesList(props: {
               <div style={{fontWeight: 'bold'}}>{drawing.label}</div>
               <div style={{fontSize: '0.8em'}}>Added {drawing.createdAt?.toLocaleDateString()}</div>
             </div>
-            {drawing.lifecycle == 'live' ? (<>
-              {drawing.weight > 1 ? (
-                <button type="button" onClick={() => reweightWedge(drawing._id, drawing.weight-1)}>➖</button>
-              ) : []}
-              <button type="button" onClick={() => reweightWedge(drawing._id, drawing.weight+1)}>➕</button>
-              <button type="button" onClick={() => iceboxWedge(drawing._id)}>💤</button>
-            </>) : (
-              <button type="button" onClick={() => thawWedge(drawing._id)}>🆙</button>
-            )}
+            {drawing.weight > 1 ? (
+              <button type="button" onClick={() => reweightWedge(drawing._id, drawing.weight-1)}>➖</button>
+            ) : []}
+            <button type="button" onClick={() => reweightWedge(drawing._id, drawing.weight+1)}>➕</button>
+            <button type="button" onClick={() => iceboxWedge(drawing._id)}>💤</button>
+            <button type="button" onClick={() => dropWedge(drawing._id)}>🗑</button>
+          </div>
+        </div>
+      ))}
+      <h3 style={{marginTop: '1em'}}>Low priority</h3>
+      {wedges.filter(x => x.lifecycle == 'icebox').map(drawing => (
+        <div>
+          <div className="WedgeRow" style={{
+            backgroundColor: Colors[drawing.color as 'red'],
+            padding: '0.25em',
+            gap: '0.25em',
+          }}>
+            <div style={{ padding: '0.25em', flex: 1}}>
+              <div style={{fontWeight: 'bold'}}>{drawing.label}</div>
+              <div style={{fontSize: '0.8em'}}>Added {drawing.createdAt?.toLocaleDateString()}</div>
+            </div>
+            <button type="button" onClick={() => thawWedge(drawing._id)}>🆙</button>
             <button type="button" onClick={() => dropWedge(drawing._id)}>🗑</button>
           </div>
         </div>

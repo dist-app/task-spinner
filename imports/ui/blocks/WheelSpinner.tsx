@@ -56,11 +56,12 @@ export function WheelSpinner(props: {
         spinDuration={0.5}
         onStopSpinning={endSpin}
         data={(activeSpin?.wedges ?? wedges).map(x => ({
-          option: x.label,
+          option: x.label.length > 20 ? `${x.label.slice(0,20)}...` : x.label,
           optionSize: x.weight,
           style: {
             backgroundColor: Colors[x.color as 'red'],
             textColor: '#fff',
+            fontSize: 16,
           },
         }))}
         backgroundColors={['#3e3e3e', '#df3428']}

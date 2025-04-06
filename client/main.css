@@ -42,6 +42,7 @@ h3 {
       "spinner wedges"
       "create wedges";
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content min-content min-content 1fr;
     max-width: initial;
     column-gap: 5vw;
     margin: 0 10vw;

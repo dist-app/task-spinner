@@ -28,7 +28,7 @@ export function RecentlyDoneList(props: {
 
   return (
     <div id="RecentlyDoneList">
-      <h3>Recently completed</h3>
+      <h3>Recently Completed</h3>
       {wedges.length ? wedges.map(drawing => (
         <div key={drawing._id} className="WedgeRow" style={{
           backgroundColor: Colors[drawing.color as 'red'],
@@ -37,8 +37,9 @@ export function RecentlyDoneList(props: {
         }}>
           <div style={{ padding: '0.25em', flex: 1}}>
             <div style={{fontWeight: 'bold', textDecoration: 'line-through' }}>{drawing.label}</div>
-            <div style={{fontSize: '0.8em'}}>Completed {drawing.doneAt?.toLocaleDateString()}</div>
+            <div className="SmFont">Completed {drawing.doneAt?.toLocaleDateString()}</div>
           </div>
+          <div className="HugeFont RowItem">✔</div>
         </div>
       )) : (
         <div id="RecentlyDoneList" className="EmptyList SmFont">

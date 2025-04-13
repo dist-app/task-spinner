@@ -61,6 +61,11 @@ h3 {
 .WedgeRow button {
   width: 3em;
 }
+.WedgeRow .RowItem {
+  align-self: center;
+  width: 2em;
+  text-align: center;
+}
 #WheelHeader {
   grid-area: header;
   text-align: center;
@@ -124,6 +129,9 @@ h3 {
 }
 .LgFont {
   font-size: 1.2em;
+}
+.HugeFont {
+  font-size: 1.5em;
 }
 
 .input-row input {

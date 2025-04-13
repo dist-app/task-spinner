@@ -40,7 +40,7 @@ export function WedgesList(props: {
   return (
     <div id="WedgesList">
 
-      <h3>Tasks in play</h3>
+      <h3>Tasks in Play</h3>
       {liveWedges.length ? liveWedges.map(wedge => (
         <div key={wedge._id} className="WedgeRow" style={{
           backgroundColor: Colors[wedge.color as 'red'],
@@ -48,8 +48,8 @@ export function WedgesList(props: {
           gap: '0.25em',
         }}>
           <div style={{ padding: '0.25em', flex: 1}}>
-            <div style={{fontWeight: 'bold'}}>{wedge.label}</div>
-            <div style={{fontSize: '0.8em'}}>Added {wedge.createdAt?.toLocaleDateString()}</div>
+            <strong>{wedge.label}</strong>
+            <div className="SmFont">Added {wedge.createdAt?.toLocaleDateString()}</div>
           </div>
           {wedge.weight > 1 ? (
             <button type="button" onClick={() => reweightWedge(wedge._id, wedge.weight-1)}>➖</button>
@@ -64,7 +64,7 @@ export function WedgesList(props: {
         </div>
       )}
 
-      <h3 style={{marginTop: '1em'}}>Low priority</h3>
+      <h3 style={{marginTop: '1em'}}>Snoozed Tasks</h3>
       {iceboxWedges.length ? iceboxWedges.map(wedge => (
         <div key={wedge._id} className="WedgeRow" style={{
           backgroundColor: Colors[wedge.color as 'red'],
@@ -72,8 +72,8 @@ export function WedgesList(props: {
           gap: '0.25em',
         }}>
           <div style={{ padding: '0.25em', flex: 1}}>
-            <div style={{fontWeight: 'bold'}}>{wedge.label}</div>
-            <div style={{fontSize: '0.8em'}}>Added {wedge.createdAt?.toLocaleDateString()}</div>
+            <strong>{wedge.label}</strong>
+            <div className="SmFont">Added {wedge.createdAt?.toLocaleDateString()}</div>
           </div>
           <button type="button" onClick={() => thawWedge(wedge._id)}>🆙</button>
           <button type="button" onClick={() => dropWedge(wedge._id)}>🗑</button>

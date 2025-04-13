@@ -26,18 +26,10 @@ export function RecentlyDoneList(props: {
       },
     }), [props.wheelId]);
 
-  if (wedges.length == 0) {
-    return (
-      <div id="RecentlyDoneList">
-        Completed tasks will go here
-      </div>
-    );
-  }
-
   return (
     <div id="RecentlyDoneList">
       <h3>Recently completed</h3>
-      {wedges.map(drawing => (
+      {wedges.length ? wedges.map(drawing => (
         <div key={drawing._id} className="WedgeRow" style={{
           backgroundColor: Colors[drawing.color as 'red'],
           padding: '0.25em',
@@ -48,7 +40,11 @@ export function RecentlyDoneList(props: {
             <div style={{fontSize: '0.8em'}}>Completed {drawing.doneAt?.toLocaleDateString()}</div>
           </div>
         </div>
-      ))}
+      )) : (
+        <div id="RecentlyDoneList" className="EmptyList SmFont">
+          Your completed tasks will go here.
+        </div>
+      )}
     </div>
   );
 }

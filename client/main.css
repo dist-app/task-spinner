@@ -109,7 +109,20 @@ h3 {
   color: #fff;
 }
 
-#DrawingsList button {
+.EmptyList {
+  background-color: #f3f3f3;
+  border: 6px dashed #e3e3e3;
+  border-radius: 15px;
+  text-align: center;
+  padding: 0.75em 1.5em;
+  color: #666;
+  font-style: italic;
+}
+
+.SmFont {
+  font-size: 0.8em;
+}
+.LgFont {
   font-size: 1.2em;
 }
 

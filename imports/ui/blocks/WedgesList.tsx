@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useFind } from 'meteor/react-meteor-data';
 import { WedgesCollection } from '/imports/api/wedges';
 import { Colors } from '../util/colors';
@@ -34,54 +34,56 @@ export function WedgesList(props: {
     Meteor.callAsync('wedges/reweight', id, newWeight);
   }, []);
 
-  if (wedges.length == 0) {
-    return (
-      <div id="WedgesList">
-        Add a task to get started
-      </div>
-    );
-  }
+  const liveWedges = useMemo(() => wedges.filter(x => x.lifecycle == 'live'), [wedges]);
+  const iceboxWedges = useMemo(() => wedges.filter(x => x.lifecycle == 'icebox'), [wedges]);
 
   return (
     <div id="WedgesList">
+
       <h3>Tasks in play</h3>
-      {wedges.filter(x => x.lifecycle == 'live').map(drawing => (
-        <div>
-          <div className="WedgeRow" style={{
-            backgroundColor: Colors[drawing.color as 'red'],
-            padding: '0.25em',
-            gap: '0.25em',
-          }}>
-            <div style={{ padding: '0.25em', flex: 1}}>
-              <div style={{fontWeight: 'bold'}}>{drawing.label}</div>
-              <div style={{fontSize: '0.8em'}}>Added {drawing.createdAt?.toLocaleDateString()}</div>
-            </div>
-            {drawing.weight > 1 ? (
-              <button type="button" onClick={() => reweightWedge(drawing._id, drawing.weight-1)}>➖</button>
-            ) : []}
-            <button type="button" onClick={() => reweightWedge(drawing._id, drawing.weight+1)}>➕</button>
-            <button type="button" onClick={() => iceboxWedge(drawing._id)}>💤</button>
-            <button type="button" onClick={() => dropWedge(drawing._id)}>🗑</button>
+      {liveWedges.length ? liveWedges.map(wedge => (
+        <div key={wedge._id} className="WedgeRow" style={{
+          backgroundColor: Colors[wedge.color as 'red'],
+          padding: '0.25em',
+          gap: '0.25em',
+        }}>
+          <div style={{ padding: '0.25em', flex: 1}}>
+            <div style={{fontWeight: 'bold'}}>{wedge.label}</div>
+            <div style={{fontSize: '0.8em'}}>Added {wedge.createdAt?.toLocaleDateString()}</div>
           </div>
+          {wedge.weight > 1 ? (
+            <button type="button" onClick={() => reweightWedge(wedge._id, wedge.weight-1)}>➖</button>
+          ) : []}
+          <button type="button" onClick={() => reweightWedge(wedge._id, wedge.weight+1)}>➕</button>
+          <button type="button" onClick={() => iceboxWedge(wedge._id)}>💤</button>
+          <button type="button" onClick={() => dropWedge(wedge._id)}>🗑</button>
         </div>
-      ))}
+      )) : (
+        <div className="EmptyList LgFont">
+          Add several tasks you've been procrastinating on to get started.
+        </div>
+      )}
+
       <h3 style={{marginTop: '1em'}}>Low priority</h3>
-      {wedges.filter(x => x.lifecycle == 'icebox').map(drawing => (
-        <div>
-          <div className="WedgeRow" style={{
-            backgroundColor: Colors[drawing.color as 'red'],
-            padding: '0.25em',
-            gap: '0.25em',
-          }}>
-            <div style={{ padding: '0.25em', flex: 1}}>
-              <div style={{fontWeight: 'bold'}}>{drawing.label}</div>
-              <div style={{fontSize: '0.8em'}}>Added {drawing.createdAt?.toLocaleDateString()}</div>
-            </div>
-            <button type="button" onClick={() => thawWedge(drawing._id)}>🆙</button>
-            <button type="button" onClick={() => dropWedge(drawing._id)}>🗑</button>
+      {iceboxWedges.length ? iceboxWedges.map(wedge => (
+        <div key={wedge._id} className="WedgeRow" style={{
+          backgroundColor: Colors[wedge.color as 'red'],
+          padding: '0.25em',
+          gap: '0.25em',
+        }}>
+          <div style={{ padding: '0.25em', flex: 1}}>
+            <div style={{fontWeight: 'bold'}}>{wedge.label}</div>
+            <div style={{fontSize: '0.8em'}}>Added {wedge.createdAt?.toLocaleDateString()}</div>
           </div>
+          <button type="button" onClick={() => thawWedge(wedge._id)}>🆙</button>
+          <button type="button" onClick={() => dropWedge(wedge._id)}>🗑</button>
         </div>
-      ))}
+      )) : (
+        <div className="EmptyList SmFont">
+          Snooze any tasks that aren't as important yet.
+        </div>
+      )}
+
     </div>
   );
 }

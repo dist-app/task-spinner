@@ -1,0 +1,45 @@
+---
+apiVersion: bundle.dist.app/v1alpha1
+kind: BundleConfig
+metadata:
+  name: default
+spec:
+  denoDeploy:
+    databases:
+      default: ''
+    requestTimeout: 5000
+
+  meteorApp:
+    spaPathPatterns:
+    - /
+    - /wheels/*
+
+  appName: Task Wheel
+  appDesc: Spinner for the todos that you aren't excited about
+  appIcon:
+    type: glyph
+    glyph:
+      text: '🤸🏻'
+      backgroundColor: '#d9941e'
+
+  authnMethods:
+    cookie:
+      sessionLengthDays: 14
+
+# ---
+# apiVersion: bundle.dist.app/v1alpha1
+# kind: MeteorApp
+# metadata:
+#   name: main
+# spec:
+#   spaPathPatterns:
+#   - /
+#   - /wheels/*
+
+# ---
+# apiVersion: bundle.dist.app/v1alpha1
+# kind: CookieAuthn
+# metadata:
+#   name: main
+# spec:
+#   sessionLengthDays: 14

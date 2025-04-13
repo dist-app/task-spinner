@@ -3,9 +3,10 @@ import { useSubscribe, useFind, useTracker } from 'meteor/react-meteor-data';
 
 import { WheelsCollection } from '/imports/api/wheels';
 import { CreateWedgeForm } from './blocks/CreateWedgeForm';
-import { WheelSpinner } from './blocks/WheelSpinner';
 import { DrawingsList } from './blocks/DrawingsList';
+import { RecentlyDoneList } from './blocks/RecentlyDoneList';
 import { WedgesList } from './blocks/WedgesList';
+import { WheelSpinner } from './blocks/WheelSpinner';
 
 export const WheelPage = (props: {
   wheelId: string;
@@ -25,7 +26,10 @@ export const WheelPage = (props: {
       <WheelSpinner wheelId={wheel._id} />
       {/* <div id="WheelSidebar"> */}
       <DrawingsList wheelId={wheel._id} />
-      <CreateWedgeForm wheelId={wheel._id} />
+      <div id="CreateBox">
+        <CreateWedgeForm wheelId={wheel._id} />
+        <RecentlyDoneList wheelId={wheel._id} />
+      </div>
       <WedgesList wheelId={wheel._id} />
       {/* </div> */}
     </div>

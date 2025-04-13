@@ -92,8 +92,11 @@ h3 {
 #DrawingsList {
   grid-area: drawings;
 }
-#CreateWedgeForm {
+#CreateBox {
   grid-area: create;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 #WedgesList {
   grid-area: wedges;

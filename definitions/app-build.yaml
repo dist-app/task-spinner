@@ -6,39 +6,46 @@ metadata:
 spec:
   title: Task Wheel
   description: Spinner for the todos that you aren't excited about
-  primaryIcon:
-    apiVersion: TODO.dist.app/v1alpha1
-    kind: Glyph
-    spec:
-      text: 🤸🏻
-      backgroundColor: '#d9941e'
+  iconRef:
+    apiVersion: manifest.dist.app/v1alpha1
+    kind: GlyphIcon
+    name: primary
+    # spec:
+    #   text: 🤸🏻
+    #   backgroundColor: '#d9941e'
+
+---
+apiVersion: manifest.dist.app/v1alpha1
+kind: GlyphIcon
+metadata:
+  name: primary
+spec:
+  text: 🤸🏻
+  backgroundColor: '#d9941e'
 
 ---
 apiVersion: bundle.dist.app/v1alpha1
-kind: DenoDeploy
+kind: MeteorBundle
 metadata:
-  name: main
+  name: client
 spec:
-  attachDatabase: true
-  requestTimeout: 5000
+  sourcePath: .
+  platforms:
+  - web.browser
 
 ---
 apiVersion: bundle.dist.app/v1alpha1
-kind: MeteorServerless
+kind: DdpBackend
 metadata:
-  name: main
+  name: server
 spec:
+  meteorBundleName: client
   spaPathPatterns:
   - /
   - /wheels/*
   authnMethods:
+    oidc:
+      issuer: https://login.dist.app
     cookie:
       sessionLengthDays: 14
-
-# ---
-# apiVersion: bundle.dist.app/v1alpha1
-# kind: CookieAuthn
-# metadata:
-#   name: main
-# spec:
-#   sessionLengthDays: 14
+  storageMode: IsolationByIdentity

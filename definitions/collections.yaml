@@ -1,0 +1,73 @@
+---
+apiVersion: manifest.dist.app/v1alpha1
+kind: EntityCollection
+metadata:
+  name: Wheels
+spec:
+  group: task-spinner.dist.app
+  version: v1alpha1
+  names:
+    kind: Wheel
+    plural: wheels
+    singular: wheel
+  properties:
+    spec:
+      type: object
+      required:
+      - createdAt
+      - label
+      properties:
+        createdAt:
+          type: dateTime
+        label:
+          type: string
+
+---
+apiVersion: manifest.dist.app/v1alpha1
+kind: EntityCollection
+metadata:
+  name: Wedges
+spec:
+  group: task-spinner.dist.app
+  version: v1alpha1
+  names:
+    kind: Wedge
+    plural: wedges
+    singular: wedge
+  properties:
+    spec:
+      type: object
+      required:
+      - createdAt
+      - label
+      - wheelId
+      - createdAt
+      - lifecycle
+      - label
+      - weight
+      - color
+      properties:
+        wheelId:
+          type: string
+        createdAt:
+          type: dateTime
+        drawnAt:
+          type: dateTime
+        doneAt:
+          type: dateTime
+        lifecycle:
+          type: string
+          enum:
+          - live
+          - icebox
+          - drawn
+          - done
+          - dropped
+        label:
+          type: string
+        weight:
+          type: number
+          # TODO: integer
+          # TODO: min 1
+        color:
+          type: string

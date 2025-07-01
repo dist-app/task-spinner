@@ -8,11 +8,11 @@
   "devDependencies": {
     "@babel/runtime": "^7",
     "@types/mocha": "^10",
-    "@types/node": "^22",
+    "@types/node": "^24",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "meteor-node-stubs": "^1",
-    "raviger": "^5.0.0-2",
+    "raviger": "^5.0.0",
     "react": "^18",
     "react-custom-roulette": "^1",
     "react-dom": "^18",
